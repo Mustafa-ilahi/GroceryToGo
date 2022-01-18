@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   },
   signinView: {
     marginTop: Dimensions.get('window').height * 0.02,
-    backgroundColor: '#102a68',
+    backgroundColor: '#102A68',
     width: Dimensions.get('window').width * 0.9,
     padding: Dimensions.get('window').height * 0.02,
     borderRadius: 10,
