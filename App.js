@@ -7,7 +7,7 @@ import SignUp from './src/component/SignUp';
 export default function App() {
   return (
     <View style={styles.container}>
-      {/* <Home /> */}
+      <Home />
       {/* <SignUp /> */}
       {/* <SignIn /> */}
     </View>
