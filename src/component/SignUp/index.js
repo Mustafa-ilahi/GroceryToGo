@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   ActivityIndicator,
   Dimensions,
@@ -10,6 +10,10 @@ import {
   View,
 } from 'react-native';
 import {TextInput} from 'react-native-paper';
+// import {firebaseConfig} from '../../config/firebase';
+// import firebase from '@react-native-firebase/app';
+// import firestore from '@react-native-firebase/firestore';
+// const {auth} = firebase();
 
 export default function SignUp() {
   const [userName, setUserName] = useState('');
@@ -19,6 +23,8 @@ export default function SignUp() {
   const [eyeIcon, setEyeIcon] = useState('eye-off');
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState('');
+
+ 
 
   const showPasswordValue = () => {
     setShowPassword(!showPassword);
@@ -38,24 +44,20 @@ export default function SignUp() {
         // const signUp = await auth()
         //   .createUserWithEmailAndPassword(email, password)
         //   .then(() => {
-        //     dispatch(storeData(role, email));
+        //     // dispatch(storeData(role, email));
         //     firestore()
         //       .collection('Users')
         //       .add({
         //         userName,
         //         email,
-        //         role,
         //       })
         //       .then(() => {
         //         setLoader(false);
-        //         if (role === 'Admin') {
-        //           navigation.navigate('Admin');
-        //         } else if (role === 'Student') {
-        //           navigation.navigate('Student');
-        //         } else if (role === 'Company') {
-        //           navigation.navigate('Company');
-        //         }
+        //         alert('done ha bosss');
         //       });
+        //   })
+        //   .catch(err => {
+        //     console.log(err);
         //   });
       } else if (userName == '') {
         setError('*Username is required');
@@ -68,6 +70,7 @@ export default function SignUp() {
         setLoader(false);
       }
     } catch (error) {
+      console.log(error);
       setError(error.message.split(']')[1]);
       setLoader(false);
     }
@@ -144,7 +147,10 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: Dimensions.get('window').height * 0.05,
   },
-  signUpView: {alignSelf: 'flex-start', padding: Dimensions.get('window').width * 0.02},
+  signUpView: {
+    alignSelf: 'flex-start',
+    padding: Dimensions.get('window').width * 0.02,
+  },
   welcomeBack: {
     fontSize: 35,
     fontFamily: 'Poppins-SemiBold',
@@ -175,7 +181,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 8,
     borderBottomLeftRadius: 8,
   },
-  
+
   password: {
     marginTop: Dimensions.get('window').height * 0.02,
 
