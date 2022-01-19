@@ -27,12 +27,7 @@ export default function Home() {
         </TouchableOpacity>
       </View>
       <View style={{padding: Dimensions.get('window').height * 0.03}}>
-        <Text
-          style={{
-            fontFamily: 'Poppins-Regular',
-            textAlign: 'center',
-            fontSize: 14,
-          }}>
+        <Text style={styles.footerText}>
           By proceeding, I accept the{' '}
           <Text style={{fontWeight: 'bold'}}>GroceriesToGo Service</Text> and
           confirm that I have read{' '}
@@ -88,5 +83,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#fff',
     textAlign: 'center',
+  },
+  footerText: {
+    fontFamily: 'Poppins-Regular',
+    textAlign: 'center',
+    fontSize: 14,
   },
 });

@@ -1,13 +1,79 @@
 import React, {useState} from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  ActivityIndicator,
+  Dimensions,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {TextInput} from 'react-native-paper';
 
 export default function SignUp() {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(true);
+  const [eyeIcon, setEyeIcon] = useState('eye-off');
+  const [loader, setLoader] = useState(false);
+  const [error, setError] = useState('');
+
+  const showPasswordValue = () => {
+    setShowPassword(!showPassword);
+    if (showPassword) {
+      setEyeIcon('eye');
+    } else {
+      setEyeIcon('eye-off');
+    }
+  };
+
+  const createAnAccount = async () => {
+    try {
+      setLoader(true);
+      if (userName !== '' && email !== '' && password !== '') {
+        setLoader(true);
+        setError('');
+        // const signUp = await auth()
+        //   .createUserWithEmailAndPassword(email, password)
+        //   .then(() => {
+        //     dispatch(storeData(role, email));
+        //     firestore()
+        //       .collection('Users')
+        //       .add({
+        //         userName,
+        //         email,
+        //         role,
+        //       })
+        //       .then(() => {
+        //         setLoader(false);
+        //         if (role === 'Admin') {
+        //           navigation.navigate('Admin');
+        //         } else if (role === 'Student') {
+        //           navigation.navigate('Student');
+        //         } else if (role === 'Company') {
+        //           navigation.navigate('Company');
+        //         }
+        //       });
+        //   });
+      } else if (userName == '') {
+        setError('*Username is required');
+        setLoader(false);
+      } else if (email == '') {
+        setError('*Email is required');
+        setLoader(false);
+      } else if (password == '') {
+        setError('*Password is required');
+        setLoader(false);
+      }
+    } catch (error) {
+      setError(error.message.split(']')[1]);
+      setLoader(false);
+    }
+  };
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Image source={require('../../assets/logo2.png')} style={styles.img} />
 
       <View style={styles.signUpView}>
@@ -36,25 +102,27 @@ export default function SignUp() {
           value={password}
           activeUnderlineColor="#102a68"
           label="Password"
-          // secureTextEntry={showPassword}
-          // right={<TextInput.Icon name={eyeIcon}
-          // onPress={showPasswordValue}
-          // />}
+          secureTextEntry={showPassword}
+          right={<TextInput.Icon name={eyeIcon} onPress={showPasswordValue} />}
           style={styles.password}
           underlineColor="transparent"
         />
       </View>
       <View style={styles.createAccountBtn}>
-        <TouchableOpacity
-        //   onPress={createAnAccount}
-        >
-          {/* {loader ? (
-              <ActivityIndicator animating={true} color={'#fff'} />
-            ) : ( */}
-          <Text style={styles.createAccountBtnText}>Create an account</Text>
-          {/* )} */}
+        <TouchableOpacity onPress={createAnAccount}>
+          {loader ? (
+            <ActivityIndicator animating={true} color={'#fff'} size={25} />
+          ) : (
+            <Text style={styles.createAccountBtnText}>Create an account</Text>
+          )}
         </TouchableOpacity>
       </View>
+
+      {error !== '' && (
+        <View style={styles.errorView}>
+          <Text style={styles.error}>{error}</Text>
+        </View>
+      )}
       <View>
         <Text style={styles.alreadyMember}>
           Already have an account?{' '}
@@ -65,7 +133,7 @@ export default function SignUp() {
           </Text>
         </Text>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 const styles = StyleSheet.create({
@@ -74,26 +142,25 @@ const styles = StyleSheet.create({
   },
   img: {
     alignSelf: 'center',
-    marginTop:30
+    marginTop: Dimensions.get('window').height * 0.05,
   },
-  signUpView: {alignSelf: 'flex-start', padding: 10},
+  signUpView: {alignSelf: 'flex-start', padding: Dimensions.get('window').width * 0.02},
   welcomeBack: {
     fontSize: 35,
     fontFamily: 'Poppins-SemiBold',
     color: '#ff5621',
-    paddingLeft: 7,
-    paddingTop:20
+    paddingLeft: Dimensions.get('window').width * 0.03,
+    paddingTop: Dimensions.get('window').height * 0.03,
   },
   form: {
     width: '95%',
-    alignSelf: 'flex-start',
-    paddingLeft: 15,
+    alignSelf: 'center',
+    padding: Dimensions.get('window').width * 0.02,
   },
   signUpText: {
     color: '#102A68',
-    // paddingTop: 10,
     fontSize: 18,
-    paddingLeft: 7,
+    paddingLeft: Dimensions.get('window').width * 0.03,
     fontFamily: 'Poppins-Regular',
   },
   userName: {
@@ -103,16 +170,15 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
   },
   email: {
-    marginTop: 20,
+    marginTop: Dimensions.get('window').height * 0.02,
     borderTopRadius: 12,
     borderBottomRightRadius: 8,
     borderBottomLeftRadius: 8,
   },
-  passwordText: {
-    paddingTop: 20,
-  },
+  
   password: {
-    marginTop: 20,
+    marginTop: Dimensions.get('window').height * 0.02,
+
     borderTopRadius: 12,
     borderBottomRightRadius: 8,
     borderBottomLeftRadius: 8,
@@ -120,12 +186,12 @@ const styles = StyleSheet.create({
 
   createAccountBtn: {
     backgroundColor: '#102A68',
-    width: 330,
-    height: 50,
+    width: Dimensions.get('window').width * 0.9,
     justifyContent: 'center',
     alignSelf: 'center',
     borderRadius: 10,
-    marginTop: 20,
+    padding: Dimensions.get('window').height * 0.02,
+    marginTop: Dimensions.get('window').height * 0.01,
   },
   createAccountBtnText: {
     fontSize: 18,
@@ -135,9 +201,17 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
   },
   alreadyMember: {
-    paddingTop: 10,
+    paddingTop: Dimensions.get('window').height * 0.02,
     color: '#ff5621',
-    textAlign:"center",
+    textAlign: 'center',
   },
   signin: {fontWeight: 'bold'},
+  error: {
+    color: 'red',
+    fontSize: 12,
+    textAlign: 'left',
+    paddingLeft: Dimensions.get('window').width * 0.06,
+    fontFamily: 'Poppins-Regular',
+  },
+  errorView: {marginTop: Dimensions.get('window').height * 0.01},
 });
