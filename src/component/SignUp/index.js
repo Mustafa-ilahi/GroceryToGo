@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {
   ActivityIndicator,
   Dimensions,
@@ -46,7 +46,7 @@ export default function SignUp({navigation}) {
         const signUp = await auth()
           .createUserWithEmailAndPassword(email, password)
           .then(() => {
-            dispatch(storeData(userName, email));
+            dispatch(storeData(email, userName));
             firestore()
               .collection('Users')
               .add({
@@ -199,6 +199,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 10,
     padding: Dimensions.get('window').height * 0.02,
+    height: Dimensions.get('window').height * 0.08,
     marginTop: Dimensions.get('window').height * 0.01,
   },
   createAccountBtnText: {

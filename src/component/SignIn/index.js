@@ -17,8 +17,8 @@ import {useDispatch} from 'react-redux';
 const {auth} = firebase();
 
 export default function SignIn({navigation}) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('test@gmail.com');
+  const [password, setPassword] = useState('123456');
   const [showPassword, setShowPassword] = useState(true);
   const [eyeIcon, setEyeIcon] = useState('eye-off');
   const [loader, setLoader] = useState(false);
@@ -50,7 +50,8 @@ export default function SignIn({navigation}) {
               .get()
               .then(snapshot => {
                 snapshot.forEach(item => {
-                  dispatch(storeData(item.data().userName, item.data().email));
+                  dispatch(storeData(item.data().email, item.data().userName));
+                  // navigation.navigate('Dashboard');
                 });
               });
           })
@@ -182,6 +183,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: Dimensions.get('window').height * 0.02,
     marginTop: Dimensions.get('window').height * 0.03,
+    height:Dimensions.get('window').height *0.08
+
   },
   signIn: {
     fontSize: 18,
