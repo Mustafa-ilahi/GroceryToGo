@@ -9,14 +9,22 @@ import {
   View,
 } from 'react-native';
 import {TextInput} from 'react-native-paper';
+import {storeData} from '../../store/action';
+import firebase from '../../config/firebase';
+import firestore from '@react-native-firebase/firestore';
+import {useDispatch} from 'react-redux';
 
-export default function SignIn() {
+const {auth} = firebase();
+
+export default function SignIn({navigation}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(true);
   const [eyeIcon, setEyeIcon] = useState('eye-off');
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState('');
+
+  const dispatch = useDispatch();
 
   const showPasswordValue = () => {
     setShowPassword(!showPassword);
@@ -31,26 +39,25 @@ export default function SignIn() {
     setLoader(true);
     try {
       if (email !== '' && password !== '') {
-        // setLoader(false);
         setError('');
-        // const signIn = auth()
-        //   .signInWithEmailAndPassword(email, password)
-        //   .then(() => {
-        //     setLoader(false);
-        //     let data = firestore()
-        //       .collection('Users')
-        //       .where('email', '==', email)
-        //       .get()
-        //       .then(snapshot => {
-        //         snapshot.forEach(item => {
-        //           dispatch(storeData(item.data().role, item.data().email));
-        //         });
-        //       });
-        //   })
-        //   .catch(error => {
-        //     setError(error.message.split(']')[1]);
-        //     setLoader(false);
-        //   });
+        const signIn = auth()
+          .signInWithEmailAndPassword(email, password)
+          .then(() => {
+            setLoader(false);
+            let data = firestore()
+              .collection('Users')
+              .where('email', '==', email)
+              .get()
+              .then(snapshot => {
+                snapshot.forEach(item => {
+                  dispatch(storeData(item.data().userName, item.data().email));
+                });
+              });
+          })
+          .catch(error => {
+            setError(error.message.split(']')[1]);
+            setLoader(false);
+          });
       } else if (email == '') {
         setError('*Email is required');
         setLoader(false);
@@ -108,7 +115,7 @@ export default function SignIn() {
         <Text style={styles.newMember}>
           Don't have an account?{' '}
           <Text
-            // onPress={() => navigation.navigate('SignIn')}
+            onPress={() => navigation.navigate('SignUp')}
             style={styles.signUp}>
             Sign Up
           </Text>
@@ -186,7 +193,7 @@ const styles = StyleSheet.create({
   newMember: {
     fontFamily: 'Poppins-Regular',
     paddingTop: Dimensions.get('window').height * 0.02,
-    color: '#102A68',
+    color: '#ff5621',
     textAlign: 'center',
   },
   signUp: {fontWeight: 'bold'},

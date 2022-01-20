@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 
-export default function Home() {
+export default function Home({navigation}) {
   return (
     <View style={styles.container}>
       <Text style={styles.headerText}> Solution of searching from 2022</Text>
@@ -17,12 +17,12 @@ export default function Home() {
       </Text>
       <Image source={require('../../assets/logo2.png')} style={styles.img} />
       <View style={styles.createBtnView}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>{navigation.navigate('SignUp')}}>
           <Text style={styles.createBtnText}>Create an account</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.signinView}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>{navigation.navigate('SignIn')}}>
           <Text style={styles.siginText}>Sign in</Text>
         </TouchableOpacity>
       </View>

@@ -10,12 +10,14 @@ import {
   View,
 } from 'react-native';
 import {TextInput} from 'react-native-paper';
-// import {firebaseConfig} from '../../config/firebase';
-// import firebase from '@react-native-firebase/app';
-// import firestore from '@react-native-firebase/firestore';
-// const {auth} = firebase();
+import firebase from '../../config/firebase';
+import firestore from '@react-native-firebase/firestore';
+import {storeData} from '../../store/action';
+import {useDispatch} from 'react-redux';
 
-export default function SignUp() {
+const {auth} = firebase();
+
+export default function SignUp({navigation}) {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -24,7 +26,7 @@ export default function SignUp() {
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState('');
 
- 
+  const dispatch = useDispatch();
 
   const showPasswordValue = () => {
     setShowPassword(!showPassword);
@@ -41,24 +43,24 @@ export default function SignUp() {
       if (userName !== '' && email !== '' && password !== '') {
         setLoader(true);
         setError('');
-        // const signUp = await auth()
-        //   .createUserWithEmailAndPassword(email, password)
-        //   .then(() => {
-        //     // dispatch(storeData(role, email));
-        //     firestore()
-        //       .collection('Users')
-        //       .add({
-        //         userName,
-        //         email,
-        //       })
-        //       .then(() => {
-        //         setLoader(false);
-        //         alert('done ha bosss');
-        //       });
-        //   })
-        //   .catch(err => {
-        //     console.log(err);
-        //   });
+        const signUp = await auth()
+          .createUserWithEmailAndPassword(email, password)
+          .then(() => {
+            dispatch(storeData(userName, email));
+            firestore()
+              .collection('Users')
+              .add({
+                userName,
+                email,
+              })
+              .then(() => {
+                setLoader(false);
+                navigation.navigate('Dashboard');
+              });
+          })
+          .catch(err => {
+            console.log(err);
+          });
       } else if (userName == '') {
         setError('*Username is required');
         setLoader(false);
@@ -130,7 +132,7 @@ export default function SignUp() {
         <Text style={styles.alreadyMember}>
           Already have an account?{' '}
           <Text
-            // onPress={() => navigation.navigate('SignIn')}
+            onPress={() => navigation.navigate('SignIn')}
             style={styles.signin}>
             Sign in
           </Text>
