@@ -11,6 +11,8 @@ import Dashboard from '../component/Dashboard';
 import Profile from '../component/Profile';
 import Cart from '../component/Cart';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Fontisto from 'react-native-vector-icons/Fontisto';
+import Product from '../component/Products';
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
@@ -24,7 +26,7 @@ export default function MainNavigator() {
         {isSignedIn ? (
           <Fragment>
             <Stack.Screen name="BottomNavs" component={MyTabs} />
-            {/* <Stack.Screen name="Dashboard" component={Dashboard} /> */}
+            <Stack.Screen name="Cart" component={Cart} />
           </Fragment>
         ) : (
           <Stack.Screen name="Auth" component={AuthNavigator} />
@@ -61,12 +63,12 @@ function MyTabs() {
         }}
       />
       <Tab.Screen
-        name="Cart"
-        component={Cart}
+        name="Products"
+        component={Product}
         options={{
-          tabBarLabel: 'Cart',
+          tabBarLabel: 'Products',
           tabBarIcon: ({color}) => (
-            <MaterialCommunityIcons name="cart" color={color} size={26} />
+            <Fontisto name="shopify" color={color} size={26} />
           ),
         }}
       />

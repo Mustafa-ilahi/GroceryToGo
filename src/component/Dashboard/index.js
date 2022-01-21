@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import {useSelector} from 'react-redux';
 import Icon from 'react-native-vector-icons/Entypo';
+
 import {Searchbar} from 'react-native-paper';
 export default function Dashboard({navigation}) {
   const userName = useSelector(state => state.name);
@@ -66,7 +67,7 @@ export default function Dashboard({navigation}) {
             return (
               <Image
                 key={index}
-                resizeMode="stretch"
+                resizeMode="contain"
                 style={styles.wrap}
                 source={item}
               />
@@ -296,7 +297,7 @@ const styles = StyleSheet.create({
     shadowColor: 'black',
     shadowOpacity: 0.25,
     elevation: 2,
-    borderBottomWidth:0.6,
+    borderBottomWidth: 0.6,
   },
   bestSellerView: {
     backgroundColor: '#e5fce2',
