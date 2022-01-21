@@ -83,7 +83,7 @@ export default function Cart({navigation}) {
                 <TouchableOpacity onPress={decreaseQuantity}>
                   <Text style={styles.decrease}>-</Text>
                 </TouchableOpacity>
-                <Text style={styles.quantity}>{quantity}</Text>
+                <Text style={styles.quantity}>1</Text>
                 <TouchableOpacity onPress={increaseQuantity}>
                   <Text style={styles.increase}>+</Text>
                 </TouchableOpacity>
@@ -114,7 +114,7 @@ export default function Cart({navigation}) {
                 <TouchableOpacity onPress={decreaseQuantity}>
                   <Text style={styles.decrease}>-</Text>
                 </TouchableOpacity>
-                <Text style={styles.quantity}>{quantity}</Text>
+                <Text style={styles.quantity}>2</Text>
                 <TouchableOpacity onPress={increaseQuantity}>
                   <Text style={styles.increase}>+</Text>
                 </TouchableOpacity>
@@ -145,7 +145,7 @@ export default function Cart({navigation}) {
                 <TouchableOpacity onPress={decreaseQuantity}>
                   <Text style={styles.decrease}>-</Text>
                 </TouchableOpacity>
-                <Text style={styles.quantity}>{quantity}</Text>
+                <Text style={styles.quantity}>3</Text>
                 <TouchableOpacity onPress={increaseQuantity}>
                   <Text style={styles.increase}>+</Text>
                 </TouchableOpacity>

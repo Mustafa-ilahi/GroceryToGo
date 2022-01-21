@@ -11,7 +11,7 @@ import Dashboard from '../component/Dashboard';
 import Profile from '../component/Profile';
 import Cart from '../component/Cart';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Fontisto from 'react-native-vector-icons/Fontisto';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Product from '../component/Products';
 
 const Stack = createNativeStackNavigator();
@@ -68,7 +68,7 @@ function MyTabs() {
         options={{
           tabBarLabel: 'Products',
           tabBarIcon: ({color}) => (
-            <Fontisto name="shopify" color={color} size={26} />
+            <FontAwesome name="shopping-bag" color={color} size={20} />
           ),
         }}
       />
