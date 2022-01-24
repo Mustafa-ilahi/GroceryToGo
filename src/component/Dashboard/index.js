@@ -141,12 +141,12 @@ export default function Dashboard({navigation}) {
         <View style={styles.bestSeller}>
           <View style={styles.categoryView}>
             <View>
-              <Text style={styles.categoriesHeading}>Best Sellers</Text>
+              <Text style={styles.categoriesHeading}>Our Products</Text>
             </View>
             <View>
               <TouchableOpacity
                 onPress={() => {
-                  navigation.navigate('AllProducts');
+                  navigation.navigate('Products');
                 }}>
                 <Text style={styles.seeAllText}>See all</Text>
               </TouchableOpacity>

@@ -8,15 +8,22 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { Divider } from 'react-native-paper';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-export default function AllCategories() {
+export default function AllCategories({navigation}) {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <View>
-          <Text style={styles.categoriesHeading}>Categories</Text>
-          <Divider />
+        <View style={styles.headerBtn}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Dashboard');
+            }}>
+            <Ionicons name="chevron-back" color={'#ff5621'} size={30} />
+          </TouchableOpacity>
+          <View>
+            <Text style={styles.categoryHeading}>Categories</Text>
+          </View>
         </View>
         <View style={styles.categoriesMain}>
           <View style={styles.firstCategory}>
@@ -103,13 +110,19 @@ export default function AllCategories() {
   );
 }
 const styles = StyleSheet.create({
-  categoriesHeading: {
+  headerBtn: {
+    paddingTop: Dimensions.get('window').height * 0.01,
+    paddingLeft: Dimensions.get('window').height * 0.04,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  categoryHeading: {
+    fontSize: 25,
     fontFamily: 'Poppins-SemiBold',
-    fontSize: 20,
     color: '#102A68',
-    padding: Dimensions.get('window').width * 0.05,
-    textAlign: 'center',
-
+    alignItems: 'center',
+    paddingLeft: Dimensions.get('window').width * 0.19,
   },
   categoriesMain: {
     display: 'flex',
