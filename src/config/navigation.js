@@ -13,6 +13,8 @@ import Cart from '../component/Cart';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Product from '../component/Products';
+import AllCategories from '../component/AllCategories';
+import AllProducts from '../component/AllProducts';
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
@@ -27,6 +29,8 @@ export default function MainNavigator() {
           <Fragment>
             <Stack.Screen name="BottomNavs" component={MyTabs} />
             <Stack.Screen name="Cart" component={Cart} />
+            <Stack.Screen name="AllCategories" component={AllCategories} />
+            <Stack.Screen name="AllProducts" component={AllProducts} />
           </Fragment>
         ) : (
           <Stack.Screen name="Auth" component={AuthNavigator} />

@@ -34,7 +34,7 @@ export default function Dashboard({navigation}) {
   };
   return (
     <ScrollView>
-      <View style={styles.containter}>
+      <View style={styles.container}>
         <View style={styles.header}>
           <View>
             <Text style={styles.welcomeText}>Hi, {userName}!</Text>
@@ -92,7 +92,10 @@ export default function Dashboard({navigation}) {
             <Text style={styles.categoriesHeading}>Categories</Text>
           </View>
           <View>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('AllCategories');
+              }}>
               <Text style={styles.seeAllText}>See all</Text>
             </TouchableOpacity>
           </View>
@@ -141,7 +144,10 @@ export default function Dashboard({navigation}) {
               <Text style={styles.categoriesHeading}>Best Sellers</Text>
             </View>
             <View>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('AllProducts');
+                }}>
                 <Text style={styles.seeAllText}>See all</Text>
               </TouchableOpacity>
             </View>
