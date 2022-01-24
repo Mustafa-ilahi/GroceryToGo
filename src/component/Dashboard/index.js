@@ -262,12 +262,12 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height * 0.1,
     borderRadius: 10,
     width: Dimensions.get('window').width * 0.2,
+    justifyContent: 'center',
   },
   categoryImg: {
     height: Dimensions.get('window').height * 0.06,
     width: Dimensions.get('window').width * 0.13,
-    marginLeft: Dimensions.get('window').width * 0.03,
-    marginTop: Dimensions.get('window').width * 0.01,
+    alignSelf: 'center',
   },
   categoryText: {textAlign: 'center', fontFamily: 'Poppins-Regular'},
   secondCategory: {
@@ -275,18 +275,21 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height * 0.1,
     borderRadius: 10,
     width: Dimensions.get('window').width * 0.2,
+    justifyContent: 'center',
   },
   thirdCategory: {
     backgroundColor: '#ffffe3',
     height: Dimensions.get('window').height * 0.1,
     borderRadius: 10,
     width: Dimensions.get('window').width * 0.2,
+    justifyContent: 'center',
   },
   fourthCategory: {
     backgroundColor: '#ffeeeb',
     height: Dimensions.get('window').height * 0.1,
     borderRadius: 10,
     width: Dimensions.get('window').width * 0.2,
+    justifyContent: 'center',
   },
   bestSeller: {
     paddingTop: Dimensions.get('window').height * 0.01,

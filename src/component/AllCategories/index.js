@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { Divider } from 'react-native-paper';
 
 export default function AllCategories() {
   return (
@@ -15,6 +16,7 @@ export default function AllCategories() {
       <View style={styles.container}>
         <View>
           <Text style={styles.categoriesHeading}>Categories</Text>
+          <Divider />
         </View>
         <View style={styles.categoriesMain}>
           <View style={styles.firstCategory}>
@@ -76,6 +78,26 @@ export default function AllCategories() {
             </TouchableOpacity>
           </View>
         </View>
+        <View style={styles.categoriesMain}>
+          <View style={styles.seventhCategory}>
+            <TouchableOpacity>
+              <Image
+                source={require('../../assets/dessert.png')}
+                style={styles.categoryImg}
+              />
+              <Text style={styles.categoryText}>Dessert</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.eightCategory}>
+            <TouchableOpacity>
+              <Image
+                source={require('../../assets/oil.png')}
+                style={styles.categoryImg}
+              />
+              <Text style={styles.categoryText}>Oils</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
     </ScrollView>
   );
@@ -86,6 +108,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#102A68',
     padding: Dimensions.get('window').width * 0.05,
+    textAlign: 'center',
+
   },
   categoriesMain: {
     display: 'flex',
@@ -104,7 +128,6 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height * 0.1,
     width: Dimensions.get('window').width * 0.2,
     alignSelf: 'center',
-    // marginTop: Dimensions.get('window').width * 0.03,
   },
   categoryText: {
     textAlign: 'center',
@@ -134,7 +157,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   fifthCategory: {
-    backgroundColor: '#ccede6',
+    backgroundColor: '#dfedeb',
     height: Dimensions.get('window').height * 0.2,
     width: Dimensions.get('window').width * 0.4,
     borderRadius: 10,
@@ -142,6 +165,20 @@ const styles = StyleSheet.create({
   },
   sixthCategory: {
     backgroundColor: '#e4f0df',
+    height: Dimensions.get('window').height * 0.2,
+    width: Dimensions.get('window').width * 0.4,
+    borderRadius: 10,
+    justifyContent: 'center',
+  },
+  seventhCategory: {
+    backgroundColor: '#fce6e6',
+    height: Dimensions.get('window').height * 0.2,
+    width: Dimensions.get('window').width * 0.4,
+    borderRadius: 10,
+    justifyContent: 'center',
+  },
+  eightCategory: {
+    backgroundColor: '#f0fad4',
     height: Dimensions.get('window').height * 0.2,
     width: Dimensions.get('window').width * 0.4,
     borderRadius: 10,
