@@ -15,6 +15,9 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Product from '../component/Products';
 import AllCategories from '../component/AllCategories';
 import SelectedProduct from '../component/SelectedProduct';
+import Wallet from '../component/Wallet';
+import MyVoucher from '../component/MyVoucher';
+import MyAddress from '../component/MyAddress';
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
@@ -32,6 +35,9 @@ export default function MainNavigator() {
             <Stack.Screen name="AllCategories" component={AllCategories} />
             <Stack.Screen name="SelectedProduct" component={SelectedProduct} />
             <Stack.Screen name="Product" component={Product} />
+            <Stack.Screen name="Wallet" component={Wallet} />
+            <Stack.Screen name="MyVoucher" component={MyVoucher} />
+            <Stack.Screen name="MyAddress" component={MyAddress} />
           </Fragment>
         ) : (
           <Stack.Screen name="Auth" component={AuthNavigator} />

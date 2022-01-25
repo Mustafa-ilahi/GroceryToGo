@@ -54,7 +54,7 @@ export default function Profile({navigation}) {
             </TouchableOpacity>
           </View>
           <View style={styles.iconView}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=> navigation.navigate('MyAddress')}>
               <Text style={styles.iconText}>My Address</Text>
             </TouchableOpacity>
           </View>
@@ -69,7 +69,7 @@ export default function Profile({navigation}) {
             </TouchableOpacity>
           </View>
           <View style={styles.iconView}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=> navigation.navigate('MyVoucher')}>
               <Text style={styles.iconText}>My Voucher</Text>
             </TouchableOpacity>
           </View>
@@ -84,7 +84,7 @@ export default function Profile({navigation}) {
             </TouchableOpacity>
           </View>
           <View style={styles.iconView}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=> navigation.navigate('Wallet')}>
               <Text style={styles.iconText}>Wallet</Text>
             </TouchableOpacity>
           </View>
