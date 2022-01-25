@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import {useSelector} from 'react-redux';
 import Icon from 'react-native-vector-icons/Entypo';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import {Searchbar} from 'react-native-paper';
 export default function Dashboard({navigation}) {
@@ -42,7 +43,8 @@ export default function Dashboard({navigation}) {
           </View>
           <View style={styles.cartIcon}>
             <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
-              <Icon name="shopping-cart" color={'#ff5621'} size={25} />
+              {/* <Icon name="shopping-cart" color={'#ff5621'} size={25} /> */}
+              <AntDesign name="shoppingcart" color={'#fff'} size={22} />
             </TouchableOpacity>
           </View>
         </View>
@@ -50,7 +52,7 @@ export default function Dashboard({navigation}) {
         <Searchbar
           placeholder="Search by item name"
           onChangeText={text => setSearchValue(text)}
-          inputStyle={{fontFamily: 'Poppins-Regular'}}
+          inputStyle={{fontFamily: 'Poppins-Regular',fontSize:16}}
           value={searchValue}
           style={styles.searchBar}
           placeholderTextColor={'#102A68'}
@@ -192,13 +194,12 @@ const styles = StyleSheet.create({
     paddingBottom: 0,
   },
   cartIcon: {
-    backgroundColor: '#102A68',
-    borderRadius: 20,
+    backgroundColor: 'rgb(16, 42, 104)',
+    borderRadius: 120,
     marginTop: Dimensions.get('window').height * 0.01,
     padding: Dimensions.get('window').width * 0.03,
-    height: Dimensions.get('window').height * 0.07,
-    borderColor: '#ff5621',
-    borderWidth: 1,
+    height: Dimensions.get('window').height * 0.06,
+    // width: Dimensions.get('window').width * 0.1,
   },
   semiHeading: {
     fontFamily: 'Poppins-Regular',
@@ -323,12 +324,13 @@ const styles = StyleSheet.create({
   },
   saleView: {
     alignSelf: 'center',
-    padding: Dimensions.get('window').width * 0.05,
+    padding: Dimensions.get('window').width * 0.06,
   },
   saleTitle: {
     fontFamily: 'Poppins-SemiBold',
     fontSize: 18,
     color: '#102A68',
+
   },
   saleDescription: {width: Dimensions.get('window').width * 0.5},
   price: {
