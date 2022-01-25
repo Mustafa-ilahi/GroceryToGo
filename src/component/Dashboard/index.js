@@ -50,6 +50,7 @@ export default function Dashboard({navigation}) {
         <Searchbar
           placeholder="Search by item name"
           onChangeText={text => setSearchValue(text)}
+          inputStyle={{fontFamily: 'Poppins-Regular'}}
           value={searchValue}
           style={styles.searchBar}
           placeholderTextColor={'#102A68'}
