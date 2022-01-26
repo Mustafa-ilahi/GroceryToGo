@@ -43,7 +43,6 @@ export default function Dashboard({navigation}) {
           </View>
           <View style={styles.cartIcon}>
             <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
-              {/* <Icon name="shopping-cart" color={'#ff5621'} size={25} /> */}
               <AntDesign name="shoppingcart" color={'#fff'} size={22} />
             </TouchableOpacity>
           </View>
@@ -52,7 +51,7 @@ export default function Dashboard({navigation}) {
         <Searchbar
           placeholder="Search by item name"
           onChangeText={text => setSearchValue(text)}
-          inputStyle={{fontFamily: 'Poppins-Regular',fontSize:16}}
+          inputStyle={{fontFamily: 'Poppins-Regular', fontSize: 16}}
           value={searchValue}
           style={styles.searchBar}
           placeholderTextColor={'#102A68'}
@@ -199,7 +198,6 @@ const styles = StyleSheet.create({
     marginTop: Dimensions.get('window').height * 0.01,
     padding: Dimensions.get('window').width * 0.03,
     height: Dimensions.get('window').height * 0.06,
-    // width: Dimensions.get('window').width * 0.1,
   },
   semiHeading: {
     fontFamily: 'Poppins-Regular',
@@ -330,13 +328,13 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-SemiBold',
     fontSize: 18,
     color: '#102A68',
-
+    paddingTop: Dimensions.get('window').height * 0.05,
   },
   saleDescription: {width: Dimensions.get('window').width * 0.5},
   price: {
     fontFamily: 'Poppins-SemiBold',
     fontSize: 20,
-    paddingTop: Dimensions.get('window').height * 0.02,
+    paddingBottom: Dimensions.get('window').height * 0.05,
     color: '#ff5621',
   },
 });

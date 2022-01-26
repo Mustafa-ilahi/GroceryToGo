@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Dimensions,
+  Image,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -23,6 +24,10 @@ export default function Wallet({navigation}) {
           <Text style={styles.categoryHeading}>Wallet</Text>
         </View>
       </View>
+      <View style={styles.noRecordView}>
+        <Image source={require('../../assets/nowallet.png')} />
+        <Text style={styles.noAddressText}>No wallet record!</Text>
+      </View>
     </View>
   );
 }
@@ -41,5 +46,15 @@ const styles = StyleSheet.create({
     color: '#102A68',
     alignItems: 'center',
     paddingLeft: Dimensions.get('window').width * 0.25,
+  },
+  noAddressText: {
+    fontSize: 20,
+    fontFamily: 'Poppins-SemiBold',
+    color: '#ff5621',
+    alignItems: 'center',
+  },
+  noRecordView: {
+    alignItems: 'center',
+    paddingTop: Dimensions.get('window').height * 0.2,
   },
 });
